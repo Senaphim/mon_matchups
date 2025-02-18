@@ -20,3 +20,15 @@ class Pokemon():
                 }
         self.dataset = pd.read_csv(src_csv, header=0, dtype=data_types)
         self._init_ok = 1
+
+    def types(self, name, form):
+        poss_rows = self.dataset[(self.dataset["Name"] == name)]
+        if form == "":
+            row = poss_rows[poss_rows["Form"].str.len() == 1]
+        else:
+            row = poss_rows[poss_rows["Form"] == form]
+        if row.empty:
+            return
+        type1 = str(row["Type1"].values[0]).strip()
+        type2 = str(row["Type2"].values[0]).strip()
+        return [type1, type2]

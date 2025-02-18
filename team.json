@@ -22,8 +22,8 @@
     }
   },
   "pokemon_2": {
-    "name": "Gardevior",
-    "form": "Mega",
+    "name": "Gardevoir",
+    "form": "Mega Gardevoir",
     "moves": {
       "move_1": {
         "name": "Hyper Voice",
