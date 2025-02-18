@@ -1,0 +1,20 @@
+{
+  "pokemon": "Charizard",
+  "moves": {
+    "move_1": {
+      "name": "Flamethrower",
+      "type": ""
+    },
+    "move_2": {
+      "name": "Mega Punch",
+      "type": ""
+    },
+    "move_3": {
+      "name": "Mega Punch",
+      "type": ""
+    },
+    "move_4": {
+      "name": "Mega Punch",
+      "type": ""
+    }
+}
