@@ -1,20 +1,134 @@
 {
-  "pokemon": "Charizard",
-  "moves": {
-    "move_1": {
-      "name": "Flamethrower",
-      "type": ""
-    },
-    "move_2": {
-      "name": "Mega Punch",
-      "type": ""
-    },
-    "move_3": {
-      "name": "Mega Punch",
-      "type": ""
-    },
-    "move_4": {
-      "name": "Mega Punch",
-      "type": ""
+  "pokemon_1": {
+    "name": "Charizard",
+    "form": "",
+    "moves": {
+      "move_1": {
+        "name": "Flamethrower",
+        "type": ""
+      },
+      "move_2": {
+        "name": "Mega Punch",
+        "type": ""
+          },
+      "move_3": {
+        "name": "Mega Punch",
+        "type": ""
+      },
+      "move_4": {
+        "name": "Mega Punch",
+        "type": ""
+      }
     }
+  },
+  "pokemon_2": {
+    "name": "Gardevior",
+    "form": "Mega",
+    "moves": {
+      "move_1": {
+        "name": "Hyper Voice",
+        "type": "Fairy"
+      },
+      "move_2": {
+        "name": "Mega Punch",
+        "type": ""
+      },
+      "move_3": {
+        "name": "Mega Punch",
+        "type": ""
+      },
+      "move_4": {
+        "name": "Mega Punch",
+        "type": ""
+      }
+    }
+  }, 
+  "pokemon_3": {
+    "name": "Charizard",
+    "form": "",
+    "moves": {
+      "move_1": {
+        "name": "Flamethrower",
+        "type": ""
+      },
+      "move_2": {
+        "name": "Mega Punch",
+        "type": ""
+          },
+      "move_3": {
+        "name": "Mega Punch",
+        "type": ""
+      },
+      "move_4": {
+        "name": "Mega Punch",
+        "type": ""
+      }
+    }
+  }, 
+  "pokemon_4": {
+    "name": "Charizard",
+    "form": "",
+    "moves": {
+      "move_1": {
+        "name": "Flamethrower",
+        "type": ""
+      },
+      "move_2": {
+        "name": "Mega Punch",
+        "type": ""
+          },
+      "move_3": {
+        "name": "Mega Punch",
+        "type": ""
+      },
+      "move_4": {
+        "name": "Mega Punch",
+        "type": ""
+      }
+    }
+  }, 
+  "pokemon_5": {
+    "name": "Charizard",
+    "form": "",
+    "moves": {
+      "move_1": {
+        "name": "Flamethrower",
+        "type": ""
+      },
+      "move_2": {
+        "name": "Mega Punch",
+        "type": ""
+          },
+      "move_3": {
+        "name": "Mega Punch",
+        "type": ""
+      },
+      "move_4": {
+        "name": "Mega Punch",
+        "type": ""
+      }
+    }
+  }, 
+  "pokemon_6": {
+    "name": "",
+    "form": "",
+    "moves": {
+      "move_1": {
+        "name": "",
+        "type": ""
+      },
+      "move_2": {
+        "name": "",
+        "type": ""
+          },
+      "move_3": {
+        "name": "",
+        "type": ""
+      },
+      "move_4": {
+        "name": "",
+        "type": ""
+      }
+    }
+  } 
 }
