@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-from pTypes import P_Types
+from pTypes import str_type_to_enum
 
 class Pokemon():
     def __init__(self, src_csv="./data/pokemon.csv"):
@@ -9,8 +9,8 @@ class Pokemon():
                 "ID": np.int32,
                 "Name": str,
                 "Form": str,
-                "Type1": P_Types,
-                "Type2": P_Types,
+                "Type1": str,
+                "Type2": str,
                 "Total": np.int32,
                 "HP": np.int32,
                 "Attack": np.int32,
@@ -33,4 +33,6 @@ class Pokemon():
             return
         type1 = str(row["Type1"].values[0]).strip("na")
         type2 = str(row["Type2"].values[0]).strip("na")
+        type1 = str_type_to_enum(type1)
+        type2 = str_type_to_enum(type2)
         return [type1, type2]
