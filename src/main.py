@@ -16,7 +16,7 @@ def import_team():
 def defensive_coverage(team, pokemon):
     for mon in team.keys():
         types = pokemon.types(team[mon]["name"], team[mon]["form"])
-        print(types)
+        resists = type_resist_coverage(types)
 
 if __name__ == "__main__":
     main()

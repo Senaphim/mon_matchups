@@ -1,14 +1,16 @@
 import pandas as pd
 import numpy as np
 
+from pTypes import P_Types
+
 class Pokemon():
     def __init__(self, src_csv="./data/pokemon.csv"):
         data_types = {
                 "ID": np.int32,
                 "Name": str,
                 "Form": str,
-                "Type1": str,
-                "Type2": str,
+                "Type1": P_Types,
+                "Type2": P_Types,
                 "Total": np.int32,
                 "HP": np.int32,
                 "Attack": np.int32,
