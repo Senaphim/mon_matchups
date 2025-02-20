@@ -104,3 +104,20 @@ def get_mon_resists(type_list):
         combined_resists = all_resists[0]
     return combined_resists
 
+def get_move_coverage(mv_type):
+    if mv_type is None:
+        return None
+    return MATCHUPS[mv_type.value]
+
+def combine_types(type_lists, atk=True):
+    combined_type = []
+    for i in range(len(type_lists[0])):
+        each_type = []
+        for type_list in type_lists:
+            each_type.append(type_list[i])
+        if atk:
+            combined_type.append(max(each_type))
+        else:
+            combined_type.append(min(each_type))
+    return combined_type
+

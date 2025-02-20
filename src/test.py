@@ -2,7 +2,8 @@ import unittest
 
 from pokemon import Pokemon
 from moves import Moves
-from pTypes import P_Types, str_type_to_enum, get_type_resists, get_mon_resists
+from pTypes import (P_Types, str_type_to_enum, get_type_resists,
+    get_mon_resists, get_move_coverage, combine_types)
 
 class testPokemon(unittest.TestCase):
     def test_init(self):
@@ -23,6 +24,22 @@ class testMoves(unittest.TestCase):
     def test_init(self):
         moves = Moves()
         self.assertEqual(1, moves._init_ok)
+
+    def test_move_type(self):
+        moves = Moves()
+        move = "Flamethrower"
+        self.assertEqual(P_Types.FIRE, moves.move_type(move))
+
+    def test_move_type_forced(self):
+        moves = Moves()
+        move = "Hyper Voice"
+        mv_type = "Fairy"
+        self.assertEqual(P_Types.FAIRY, moves.move_type(move, mv_type))
+
+    def test_move_type_status(self):
+        moves = Moves()
+        move = "Poison Powder"
+        self.assertEqual(None, moves.move_type(move))
 
 class testTypes(unittest.TestCase):
     def test_str_to_enum(self):
@@ -50,3 +67,25 @@ class testTypes(unittest.TestCase):
         types = [None, None]
         self.assertEqual(None, get_mon_resists(types))
 
+    def test_move_coverage(self):
+        coverage_list = [1,  1,  1, .5,  2,  1,  2,  1,  1,  1,  1,  2, .5,  1,  1,  1, .5,  1]
+        self.assertEqual(coverage_list, get_move_coverage(P_Types.FLYING))
+
+    def test_move_coverage_none(self):
+        self.assertEqual(None, get_move_coverage(None))
+
+    def test_combine_types_atk(self):
+        types_to_combine = [
+            [1,  1,  1,  1,  2,  1,  1, .5, .5,  1,  1,  1, .5, .5,  1,  1,  0,  2], 
+            [1,  2,  1,  2, .5,  1,  1,  2,  1,  0,  1, .5,  2,  1,  1,  1,  2,  1]
+        ]
+        combined = [1, 2, 1, 2, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2]
+        self.assertEqual(combined, combine_types(types_to_combine))
+
+    def test_combine_types_def(self):
+        types_to_combine = [
+            [1,  1,  1,  1,  2,  1,  1, .5, .5,  1,  1,  1, .5, .5,  1,  1,  0,  2], 
+            [1,  2,  1,  2, .5,  1,  1,  2,  1,  0,  1, .5,  2,  1,  1,  1,  2,  1]
+        ]
+        combined = [1, 1, 1, 1, .5, 1, 1, .5, .5, 0, 1, .5, .5, .5, 1, 1, 0, 1]
+        self.assertEqual(combined, combine_types(types_to_combine, atk=False))
