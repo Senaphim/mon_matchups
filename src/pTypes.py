@@ -1,6 +1,6 @@
 from enum import Enum 
 
-#ATKv DEF>  Nor Fir Wat Ele Gra Ice Fig Poi Gro Fly Psy Bug Roc Gho Dra Dar Ste Fai
+# ATKv DEF> Nor Fir Wat Ele Gra Ice Fig Poi Gro Fly Psy Bug Roc Gho Dra Dar Ste Fai
 MATCHUPS = [
             [1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, .5,  0,  1,  1, .5,  1], # Nor
             [1, .5, .5,  1,  2,  2,  1,  1,  1,  1,  1,  2, .5,  1, .5,  1,  2,  1], # Fir
@@ -82,3 +82,23 @@ def str_type_to_enum(str_type):
             return P_Types.FAIRY
         case _:
             return None
+
+def get_type_resists(p_type):
+    resist_list = []
+    for atk_list in MATCHUPS:
+        resist_list.append(atk_list[p_type.value])
+    return resist_list
+
+def get_mon_resists(type_list):
+    all_resists = []
+    for p_type in type_list:
+        if p_type is not None:
+            all_resists.append(get_type_resists(p_type))
+    combined_resists = []
+    if len(all_resists) == 2:
+        for i in range(len(all_resists[0])):
+            combined_resists.append(all_resists[0][i] * all_resists[1][i])
+    else:
+        combined_resists = all_resists[0]
+    return combined_resists
+
