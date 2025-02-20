@@ -121,3 +121,14 @@ def combine_types(type_lists, atk=True):
             combined_type.append(min(each_type))
     return combined_type
 
+def count_types(type_lists, atk=True):
+    counted_type = []
+    for i in range(len(type_lists[0])):
+        each_type = []
+        for type_list in type_lists:
+            each_type.append(type_list[i])
+        if atk:
+            counted_type.append(len([i for i in each_type if i > 1]))
+        else:
+            counted_type.append(len([i for i in each_type if i < 1]))
+    return counted_type

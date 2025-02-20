@@ -2,15 +2,16 @@ import json
 
 from pokemon import Pokemon
 from moves import Moves
-from pTypes import get_mon_resists, get_move_coverage, combine_types
+from pTypes import get_mon_resists, get_move_coverage, combine_types, count_types
+from prettyPrint import defensive_table_str
 
 def main():
     pokemon_df = Pokemon()
     move_df = Moves()
     team = import_team()
-    mon_resists, combined_resists = defensive_coverage(team, pokemon_df)
+    mon_resists, combined_resists, count_resists = defensive_coverage(team, pokemon_df)
     mon_coverage, combined_coverage = offensive_coverage(team, move_df)
-    print(mon_resists, combined_resists, mon_coverage, combined_coverage)
+    defensive_table_str(team, mon_resists, combined_resists, count_resists)
 
 def import_team():
     with open("./team.json", mode="r", encoding="utf-8") as team_file:
@@ -24,7 +25,8 @@ def defensive_coverage(team, pokemon_df):
         mon_resists.append(get_mon_resists(types))
     mon_resists = [x for x in mon_resists if x is not None]
     combined_resists = combine_types(mon_resists, atk=False)
-    return mon_resists, combined_resists
+    count_resists = count_types(mon_resists, atk=False)
+    return mon_resists, combined_resists, count_resists
 
 def offensive_coverage(team, move_df):
     mon_coverage = []
