@@ -10,8 +10,14 @@ def main():
     move_df = Moves()
     team = import_team()
     mon_resists, combined_resists, count_resists = defensive_coverage(team, pokemon_df)
-    mon_coverage, combined_coverage = offensive_coverage(team, move_df)
-    defensive_table_str(team, mon_resists, combined_resists, count_resists)
+    mon_coverage, combined_coverage, count_coverage = offensive_coverage(team, move_df)
+    def_table = defensive_table_str(team, mon_resists, combined_resists, count_resists)
+    atk_table = defensive_table_str(team, mon_coverage, combined_coverage, count_coverage)
+    header = "#################\n# TEAM ANALYSIS #\n#################\n\n"
+    header_def = "DEFENSIVE ANALYSIS\n\n"
+    header_atk = "OFFENSIVE ANALYSIS\n\n"
+    out = header + header_def + def_table + "\n" + header_atk + atk_table
+    print(out)
 
 def import_team():
     with open("./team.json", mode="r", encoding="utf-8") as team_file:
@@ -44,7 +50,8 @@ def offensive_coverage(team, move_df):
         mon_coverage.append(combined_mv_coverage)
     mon_coverage = [x for x in mon_coverage if x is not None]
     combined_coverage = combine_types(mon_coverage)
-    return mon_coverage, combined_coverage
+    count_coverage = count_types(mon_coverage)
+    return mon_coverage, combined_coverage, count_coverage
 
 if __name__ == "__main__":
     main()
