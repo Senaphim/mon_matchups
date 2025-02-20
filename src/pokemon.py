@@ -30,7 +30,7 @@ class Pokemon():
         else:
             row = poss_rows[poss_rows["Form"] == form]
         if row.empty:
-            return
+            return [None, None]
         type1 = str(row["Type1"].values[0]).strip("na")
         type2 = str(row["Type2"].values[0]).strip("na")
         type1 = str_type_to_enum(type1)

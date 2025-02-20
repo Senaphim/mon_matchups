@@ -46,3 +46,7 @@ class testTypes(unittest.TestCase):
         resist_list = [1, .25, 1, 2, 1, .25, 1, 1, 2, 1, 1, .5, 2, 1, 1, 1, .25, .5]
         self.assertEqual(resist_list, get_mon_resists(types))
 
+    def test_mon_resists_none(self):
+        types = [None, None]
+        self.assertEqual(None, get_mon_resists(types))
+

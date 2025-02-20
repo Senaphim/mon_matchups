@@ -95,7 +95,9 @@ def get_mon_resists(type_list):
         if p_type is not None:
             all_resists.append(get_type_resists(p_type))
     combined_resists = []
-    if len(all_resists) == 2:
+    if len(all_resists) == 0:
+        return None
+    elif len(all_resists) == 2:
         for i in range(len(all_resists[0])):
             combined_resists.append(all_resists[0][i] * all_resists[1][i])
     else:
